@@ -10,4 +10,16 @@
         android:label="Início"
         tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/nav_alunos"
+        android:name="com.example.projeto_barrinha.ui.home.HomeFragment"
+        android:label="Início"
+        tools:layout="@layout/fragment_alunos" />
+
+    <fragment
+        android:id="@+id/nav_cad_alunos"
+        android:name="com.example.projeto_barrinha.ui.home.HomeFragment"
+        android:label="Início"
+        tools:layout="@layout/fragment_cad_aluno" />
+
 </navigation>

@@ -20,4 +20,16 @@
     <color name="button_yellow">#FBC02D</color>
     <color name="hint_grey">#9E9E9E</color>
 
+    <color name="aluno_blue">#0A2E5D</color>
+    <color name="aluno_red">#D32F2F</color>
+    <color name="aluno_yellow">#FBC02D</color>
+    <color name="aluno_green">#388E3C</color>
+
+
+        <color name="fundo_claro">#F5F5F5</color>
+        <color name="dark_blue">#0A2E5D</color>
+        <color name="border_yellow">#FBC02D</color>
+        <color name="text_grey">#888888</color>
+
+
 </resources>

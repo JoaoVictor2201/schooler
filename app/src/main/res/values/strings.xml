@@ -22,7 +22,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/texto_preto</item>
-        <item name="android:padding">4dp</item>
+        <item name="android:padding">2dp</item>
         <item name="android:textSize">12sp</item>
     </style>
 

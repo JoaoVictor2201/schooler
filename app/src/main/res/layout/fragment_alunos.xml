@@ -37,7 +37,6 @@
         android:layout_marginTop="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="Menu"
-        android:src="@drawable/ic_menu_white_24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
@@ -84,7 +83,6 @@
                     android:layout_alignParentEnd="true"
                     android:text=" Adicionar"
                     android:textColor="@android:color/white"
-                    android:drawableStart="@drawable/ic_add_white_24dp"
                     android:backgroundTint="@color/azul_escuro"
                     style="@style/Widget.AppCompat.Button.Colored"
                     tools:ignore="HardcodedText" />
@@ -113,6 +111,12 @@
                         android:text="ENDEREÇO" />
                     <TextView
                         style="@style/TableHeader"
+                        android:text="RESPONSAVEL" />
+                    <TextView
+                        style="@style/TableHeader"
+                        android:text="PERIODO" />
+                    <TextView
+                        style="@style/TableHeader"
                         android:text="AÇÕES" />
                 </TableRow>
 
@@ -123,13 +127,21 @@
                     android:paddingBottom="8dp">
                     <TextView
                         style="@style/TableData"
-                        android:text="Caralho da Silva" />
+                        android:text="NOME DO ALUNO" />
                     <TextView
                         style="@style/TableData"
-                        android:text="Colégio Cannabis" />
+                        android:text="NOME DA ESCOLA" />
                     <TextView
                         style="@style/TableData"
-                        android:text="Rua Bolinha, 123" />
+                        android:text="ENDEREÇO" />
+                    <TextView
+                        style="@style/TableData"
+                        android:text="NOME DO PAI/MÃE" />
+
+                    <TextView
+                        style="@style/TableData"
+                        android:text="M/T/N" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -147,34 +159,6 @@
 
                 <View android:layout_height="1dp" android:background="@color/linha_tabela"/>
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp">
-                    <TextView
-                        style="@style/TableData"
-                        android:text="Buceta Carvalho" />
-                    <TextView
-                        style="@style/TableData"
-                        android:text="Colégio Cacete" />
-                    <TextView
-                        style="@style/TableData"
-                        android:text="Avenida Pau no Cu, 171" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <ImageButton
-                            style="@style/TableActionButton"
-                            android:src="@drawable/ic_edit"
-                            android:contentDescription="Editar" />
-                        <ImageButton
-                            style="@style/TableActionButton"
-                            android:src="@drawable/ic_delete"
-                            android:contentDescription="Excluir" />
-                    </LinearLayout>
-                </TableRow>
 
             </TableLayout>
 
