@@ -22,4 +22,10 @@
         android:label="Início"
         tools:layout="@layout/fragment_cad_aluno" />
 
+    <fragment
+        android:id="@+id/nav_confirmacao"
+        android:name="com.example.projeto_barrinha.ui.home.HomeFragment"
+        android:label="Início"
+        tools:layout="@layout/fragment_confirmacao" />
+
 </navigation>
