@@ -7,8 +7,41 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_alunos">Alunos</string>
+    <string name="menu_dashboard">Dashboard</string>
+    <string name="menu_confirmacao">Confirmação</string>
+    <string name="menu_detalhes">Detalhes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cadastro">Cadastro</string>
+
+
+    <style name="TableHeader">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/texto_preto</item>
+        <item name="android:padding">2dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TableData">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/texto_preto</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TableActionButton">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">2dp</item>
+    </style>
+
+
 </resources>
