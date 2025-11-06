@@ -44,16 +44,17 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.nav_login, R.id.nav_register -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                    binding.appBarMain.toolbar.navigationIcon = null
-                }
-                else -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-                    setupActionBarWithNavController(navController, appBarConfiguration)
-                }
+            // Se estivermos em uma tela de autenticação (login/registro)
+            if (destination.id == R.id.nav_login || destination.id == R.id.nav_register) {
+                // Bloqueia o menu lateral
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                // Esconde o ícone de navegação (seja a seta ou o ícone do menu)
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            } else {
+                // Para todas as outras telas, desbloqueia o menu
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                // E garante que o ícone de navegação seja exibido
+                supportActionBar?.setDisplayHomeAsUpEnabled(true)
             }
         }
 
