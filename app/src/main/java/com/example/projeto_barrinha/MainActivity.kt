@@ -43,14 +43,20 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // --- Bloquear Drawer em login/registro ---
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            if (destination.id == R.id.nav_login || destination.id == R.id.nav_register) {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            } else {
-                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            when (destination.id) {
+                R.id.nav_login, R.id.nav_register -> {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                    binding.appBarMain.toolbar.navigationIcon = null
+                }
+                else -> {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+                    setupActionBarWithNavController(navController, appBarConfiguration)
+                }
             }
         }
+
 
         // --- Navigation manual para itens do Drawer ---
         navView.setNavigationItemSelectedListener { menuItem ->
