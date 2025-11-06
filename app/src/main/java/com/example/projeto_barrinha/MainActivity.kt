@@ -15,13 +15,12 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: androidx.navigation.NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -31,51 +30,60 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
 
         // --- Obter NavController ---
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         navController = navHostFragment.navController
-        // -----------------------------
 
-        // Configurar AppBar e DrawerLayout
+        // --- AppBarConfiguration ---
         appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.nav_home,
-                R.id.nav_alunos,
-                R.id.nav_detalhes
-            ), drawerLayout
+            setOf(R.id.nav_home, R.id.nav_alunos, R.id.nav_detalhes),
+            drawerLayout
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        // --- Bloquear/Desbloquear Drawer conforme a tela ---
+        // --- Bloquear Drawer em login/registro ---
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.nav_login, R.id.nav_register -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
-                }
-                else -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                }
+            if (destination.id == R.id.nav_login || destination.id == R.id.nav_register) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            } else {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
             }
         }
 
-        // --- Item "Sair" no Navigation Drawer ---
+        // --- Navigation manual para itens do Drawer ---
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+
+                R.id.nav_home -> {
+                    navController.popBackStack(R.id.nav_home, false)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+
+                R.id.nav_alunos -> {
+                    navController.popBackStack(R.id.nav_home, false) // garante voltar para home
+                    navController.navigate(R.id.nav_alunos)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+
+                R.id.nav_detalhes -> {
+                    navController.popBackStack(R.id.nav_home, false)
+                    navController.navigate(R.id.nav_detalhes)
+                    drawerLayout.closeDrawers()
+                    true
+                }
+
                 R.id.nav_logout -> {
                     navController.popBackStack(navController.graph.startDestinationId, true)
                     navController.navigate(R.id.nav_login)
                     drawerLayout.closeDrawers()
                     true
                 }
-                else -> {
-                    NavigationUI.onNavDestinationSelected(menuItem, navController)
-                    drawerLayout.closeDrawers()
-                    true
-                }
+
+                else -> false
             }
         }
     }
@@ -85,12 +93,10 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    // --- Botão voltar / Up ---
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    // --- NOVO: Atualizar nome do motorista no header ---
     fun atualizarNomeHeader(nome: String) {
         val headerView = binding.navView.getHeaderView(0)
         val tvNomeMotorista: TextView = headerView.findViewById(R.id.tvNomeMotorista)
