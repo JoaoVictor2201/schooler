@@ -30,7 +30,7 @@ class alunos : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonAdicionar.setOnClickListener {
+        binding.fabAddAluno.setOnClickListener {
             findNavController().navigate(R.id.action_nav_alunos_to_nav_cad_alunos)
         }
 

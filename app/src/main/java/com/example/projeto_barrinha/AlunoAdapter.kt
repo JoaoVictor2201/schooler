@@ -43,7 +43,7 @@ class AlunoAdapter(
         holder.txtEndereco.text = item.aluno.endereco
         holder.txtPeriodo.text = item.aluno.periodo
         holder.txtCurso.text = item.aluno.curso
-        holder.txtResponsavel.text = item.responsavel.nome
+        holder.txtResponsavel.text = "Resp: ${item.responsavel.nome}"
 
         holder.btnEditar.setOnClickListener {
             Log.d("AlunoAdapter", "Editar clicado: ${item.aluno.nome}")
